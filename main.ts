@@ -1,16 +1,3 @@
-function light2 () {
-    if (hummingbird.getSensor(SensorType.Light, ThreePort.Two) > 50) {
-        hummingbird.setPositionServo(FourPort.Three, 90)
-        basic.pause(100)
-        hummingbird.setPositionServo(FourPort.Three, 0)
-        basic.pause(100)
-        hummingbird.setPositionServo(FourPort.Four, 90)
-        basic.pause(100)
-        hummingbird.setPositionServo(FourPort.Four, 0)
-    } else {
-    	
-    }
-}
 function KRAKEN () {
     if (input.soundLevel() > 250) {
         hummingbird.setTriLED(
@@ -28,6 +15,19 @@ function KRAKEN () {
         hummingbird.setLED(ThreePort.One, 100)
         hummingbird.setLED(ThreePort.Two, 100)
         hummingbird.setLED(ThreePort.Three, 100)
+    } else {
+    	
+    }
+}
+function light2 () {
+    if (hummingbird.getSensor(SensorType.Light, ThreePort.Two) > 50) {
+        hummingbird.setPositionServo(FourPort.Three, 90)
+        basic.pause(100)
+        hummingbird.setPositionServo(FourPort.Three, 0)
+        basic.pause(100)
+        hummingbird.setPositionServo(FourPort.Four, 90)
+        basic.pause(100)
+        hummingbird.setPositionServo(FourPort.Four, 0)
     } else {
     	
     }
