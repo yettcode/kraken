@@ -12,46 +12,22 @@ function light2 () {
     }
 }
 function KRAKEN () {
-    if (input.soundLevel() > 50) {
+    if (input.soundLevel() > 250) {
         hummingbird.setTriLED(
         TwoPort.One,
         200,
         0,
         0
         )
-        basic.pause(100)
-        hummingbird.setTriLED(
-        TwoPort.One,
-        0,
-        0,
-        0
-        )
-        basic.pause(100)
         hummingbird.setTriLED(
         TwoPort.Two,
         200,
         0,
         0
         )
-        basic.pause(100)
-        hummingbird.setTriLED(
-        TwoPort.Two,
-        0,
-        0,
-        0
-        )
-        basic.pause(100)
         hummingbird.setLED(ThreePort.One, 100)
-        basic.pause(100)
-        hummingbird.setLED(ThreePort.One, 0)
-        basic.pause(100)
         hummingbird.setLED(ThreePort.Two, 100)
-        basic.pause(100)
-        hummingbird.setLED(ThreePort.Two, 0)
-        basic.pause(100)
         hummingbird.setLED(ThreePort.Three, 100)
-        basic.pause(100)
-        hummingbird.setLED(ThreePort.Three, 0)
     } else {
     	
     }
