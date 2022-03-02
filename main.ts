@@ -1,5 +1,12 @@
+function drive () {
+    if (0 < 0) {
+    	
+    } else {
+    	
+    }
+}
 function KRAKEN () {
-    if (input.soundLevel() > 250) {
+    if (input.soundLevel() > 125) {
         hummingbird.setTriLED(
         TwoPort.One,
         200,
@@ -16,7 +23,21 @@ function KRAKEN () {
         hummingbird.setLED(ThreePort.Two, 100)
         hummingbird.setLED(ThreePort.Three, 100)
     } else {
-    	
+        hummingbird.setTriLED(
+        TwoPort.One,
+        0,
+        0,
+        0
+        )
+        hummingbird.setTriLED(
+        TwoPort.Two,
+        0,
+        0,
+        0
+        )
+        hummingbird.setLED(ThreePort.One, 0)
+        hummingbird.setLED(ThreePort.Two, 0)
+        hummingbird.setLED(ThreePort.Three, 0)
     }
 }
 function light2 () {
@@ -38,4 +59,13 @@ basic.forever(function () {
 })
 basic.forever(function () {
     light2()
+})
+basic.forever(function () {
+    led.plotBarGraph(
+    hummingbird.getSensor(SensorType.Distance, ThreePort.One),
+    255
+    )
+})
+basic.forever(function () {
+    drive()
 })
