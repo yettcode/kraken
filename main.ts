@@ -55,8 +55,20 @@ function light2 () {
 }
 hummingbird.startHummingbird()
 basic.forever(function () {
-    while (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 225) {
-        drive()
+    if (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 225) {
+        for (let index = 0; index < 99999999999 * 9999999999; index++) {
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(131, music.beat(BeatFraction.Eighth))
+            music.playTone(139, music.beat(BeatFraction.Sixteenth))
+            music.playTone(131, music.beat(BeatFraction.Sixteenth))
+            drive()
+        }
     }
 })
 basic.forever(function () {
