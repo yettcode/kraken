@@ -1,8 +1,12 @@
 function drive () {
-    if (0 < 0) {
-    	
+    if (hummingbird.getSensor(SensorType.Distance, ThreePort.One) < 5) {
+        hummingbird.setRotationServo(FourPort.One, -100)
+        basic.pause(1000)
+        hummingbird.setRotationServo(FourPort.One, 100)
+        hummingbird.setRotationServo(FourPort.Two, -100)
     } else {
-    	
+        hummingbird.setRotationServo(FourPort.One, 100)
+        hummingbird.setRotationServo(FourPort.Two, -100)
     }
 }
 function KRAKEN () {
@@ -43,29 +47,21 @@ function KRAKEN () {
 function light2 () {
     if (hummingbird.getSensor(SensorType.Light, ThreePort.Two) > 50) {
         hummingbird.setPositionServo(FourPort.Three, 90)
-        basic.pause(100)
-        hummingbird.setPositionServo(FourPort.Three, 0)
-        basic.pause(100)
         hummingbird.setPositionServo(FourPort.Four, 90)
-        basic.pause(100)
-        hummingbird.setPositionServo(FourPort.Four, 0)
     } else {
-    	
+        hummingbird.setPositionServo(FourPort.Three, 0)
+        hummingbird.setPositionServo(FourPort.Four, 0)
     }
 }
 hummingbird.startHummingbird()
+basic.forever(function () {
+    while (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 225) {
+        drive()
+    }
+})
 basic.forever(function () {
     KRAKEN()
 })
 basic.forever(function () {
     light2()
-})
-basic.forever(function () {
-    led.plotBarGraph(
-    hummingbird.getSensor(SensorType.Distance, ThreePort.One),
-    255
-    )
-})
-basic.forever(function () {
-    drive()
 })
