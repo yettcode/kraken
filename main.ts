@@ -10,63 +10,49 @@ function drive () {
     }
 }
 function KRAKEN () {
-    if (input.soundLevel() > 125) {
-        hummingbird.setTriLED(
-        TwoPort.One,
-        200,
-        0,
-        0
-        )
-        hummingbird.setTriLED(
+    hummingbird.setLED
+    hummingbird.setTriLED
         TwoPort.Two,
-        200,
+        255,
         0,
         0
-        )
-        hummingbird.setLED(ThreePort.One, 100)
-        hummingbird.setLED(ThreePort.Two, 100)
-        hummingbird.setLED(ThreePort.Three, 100)
-    } else {
-        hummingbird.setTriLED(
-        TwoPort.One,
-        0,
-        0,
-        0
-        )
-        hummingbird.setTriLED(
-        TwoPort.Two,
-        0,
-        0,
-        0
-        )
-        hummingbird.setLED(ThreePort.One, 0)
-        hummingbird.setLED(ThreePort.Two, 0)
-        hummingbird.setLED(ThreePort.Three, 0)
-    }
+    
 }
 function light2 () {
     if (hummingbird.getSensor(SensorType.Light, ThreePort.Two) > 50) {
+        hummingbird.setPositionServo(FourPort.Three, 180)
+        hummingbird.setPositionServo(FourPort.Four, 180)
+    } else {
         hummingbird.setPositionServo(FourPort.Three, 90)
         hummingbird.setPositionServo(FourPort.Four, 90)
-    } else {
-        hummingbird.setPositionServo(FourPort.Three, 0)
-        hummingbird.setPositionServo(FourPort.Four, 0)
     }
 }
 hummingbird.startHummingbird()
 basic.forever(function () {
     if (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 225) {
+        hummingbird.setTriLED(
+            TwoPort.One,
+            255,
+            0,
+            0
+        )
+        hummingbird.setTriLED(
+            TwoPort.Two,
+            255,
+            0,
+            0
+        )
+        music.playTone(139, music.beat(BeatFraction.Eighth))
+        music.playTone(131, music.beat(BeatFraction.Quarter))
+        music.playTone(139, music.beat(BeatFraction.Quarter))
+        music.playTone(131, music.beat(BeatFraction.Eighth))
+        music.playTone(139, music.beat(BeatFraction.Eighth))
+        music.playTone(139, music.beat(BeatFraction.Eighth))
+        music.playTone(139, music.beat(BeatFraction.Eighth))
+        music.playTone(131, music.beat(BeatFraction.Quarter))
+        music.playTone(139, music.beat(BeatFraction.Quarter))
+        music.playTone(131, music.beat(BeatFraction.Eighth))
         for (let index = 0; index < 99999999999 * 9999999999; index++) {
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(131, music.beat(BeatFraction.Eighth))
-            music.playTone(139, music.beat(BeatFraction.Sixteenth))
-            music.playTone(131, music.beat(BeatFraction.Sixteenth))
             drive()
         }
     }
