@@ -1,3 +1,16 @@
+function blink () {
+    hummingbird.setPositionServo(FourPort.Three, 180)
+    hummingbird.setPositionServo(FourPort.Four, 180)
+    basic.pause(500)
+    hummingbird.setPositionServo(FourPort.Four, 90)
+    hummingbird.setPositionServo(FourPort.Four, 90)
+    basic.pause(500)
+    hummingbird.setPositionServo(FourPort.Three, 180)
+    hummingbird.setPositionServo(FourPort.Four, 180)
+    basic.pause(100)
+    hummingbird.setPositionServo(FourPort.Three, 90)
+    hummingbird.setPositionServo(FourPort.Four, 90)
+}
 function kraken () {
     hummingbird.setTriLED(
     TwoPort.One,
@@ -21,6 +34,7 @@ function drive () {
         hummingbird.setLED(ThreePort.Two, 100)
         hummingbird.setLED(ThreePort.Three, 100)
         KRAKEN()
+        blink()
         hummingbird.setRotationServo(FourPort.One, -100)
         basic.pause(1000)
         hummingbird.setRotationServo(FourPort.One, 100)
