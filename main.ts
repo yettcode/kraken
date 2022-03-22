@@ -25,14 +25,6 @@ function kraken () {
 }
 function drive () {
     if (hummingbird.getSensor(SensorType.Distance, ThreePort.One) < 5) {
-        hummingbird.setTriLED(
-        TwoPort.Two,
-        0,
-        0,
-        255
-        )
-        hummingbird.setLED(ThreePort.Two, 100)
-        hummingbird.setLED(ThreePort.Three, 100)
         KRAKEN()
         blink()
         hummingbird.setRotationServo(FourPort.One, -100)
@@ -67,7 +59,14 @@ function light2 () {
 }
 hummingbird.startHummingbird()
 basic.forever(function () {
-	
+    hummingbird.setTriLED(
+    TwoPort.Two,
+    0,
+    0,
+    255
+    )
+    hummingbird.setLED(ThreePort.Two, 100)
+    hummingbird.setLED(ThreePort.Three, 100)
 })
 basic.forever(function () {
     if (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 84) {
