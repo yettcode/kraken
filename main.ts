@@ -24,29 +24,19 @@ function kraken () {
     }
 }
 function drive () {
-    if (hummingbird.getSensor(SensorType.Distance, ThreePort.One) < 5) {
-        KRAKEN()
-        blink()
+    if (hummingbird.getSensor(SensorType.Distance, ThreePort.One) < 10) {
+        music.playTone(131, music.beat(BeatFraction.Half))
+        hummingbird.setRotationServo(FourPort.One, 100)
+        basic.pause(5000)
         hummingbird.setRotationServo(FourPort.One, -100)
-        basic.pause(1000)
-        hummingbird.setRotationServo(FourPort.One, 100)
-        hummingbird.setRotationServo(FourPort.Two, -100)
+        hummingbird.setRotationServo(FourPort.Two, 100)
     } else {
-        hummingbird.setRotationServo(FourPort.One, 100)
-        hummingbird.setRotationServo(FourPort.Two, -100)
+        hummingbird.setRotationServo(FourPort.One, -100)
+        hummingbird.setRotationServo(FourPort.Two, 100)
     }
 }
 function KRAKEN () {
-    music.playTone(139, music.beat(BeatFraction.Whole))
-    music.playTone(131, music.beat(BeatFraction.Half))
-    music.playTone(139, music.beat(BeatFraction.Half))
-    music.playTone(131, music.beat(BeatFraction.Whole))
-    music.playTone(139, music.beat(BeatFraction.Whole))
-    music.playTone(139, music.beat(BeatFraction.Whole))
-    music.playTone(139, music.beat(BeatFraction.Whole))
-    music.playTone(131, music.beat(BeatFraction.Half))
-    music.playTone(139, music.beat(BeatFraction.Half))
-    music.playTone(131, music.beat(BeatFraction.Whole))
+	
 }
 function light2 () {
     if (hummingbird.getSensor(SensorType.Light, ThreePort.Three) > 50) {
@@ -58,6 +48,8 @@ function light2 () {
     }
 }
 hummingbird.startHummingbird()
+music.setTempo(30)
+music.setVolume(255)
 basic.forever(function () {
     hummingbird.setTriLED(
     TwoPort.Two,
@@ -66,10 +58,10 @@ basic.forever(function () {
     255
     )
     hummingbird.setLED(ThreePort.Two, 100)
-    hummingbird.setLED(ThreePort.Three, 100)
 })
 basic.forever(function () {
-    if (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 84) {
+    if (hummingbird.getSensor(SensorType.Sound, ThreePort.Two) >= 75) {
+        KRAKEN()
         kraken()
     }
 })
